@@ -12,5 +12,11 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx  # putting ship image on the bottom-center
         self.rect.bottom = self.screen_rect.bottom
 
+        self.moving_right = False  # Movement flag
+
+    def update(self):
+        if self.moving_right:
+            self.rect.centerx += 1
+
     def blitme(self):
         self.screen.blit(self.image, self.rect)
