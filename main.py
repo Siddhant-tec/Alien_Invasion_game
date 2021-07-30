@@ -13,7 +13,7 @@ def run_game():
     ship = Ship(screen)
 
     while True:
-        gf.check_events()
+        gf.check_events(ship)
         gf.update_screen(set, screen, ship)
         pygame.display.flip()  # update the screen
 
