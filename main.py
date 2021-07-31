@@ -16,11 +16,7 @@ def run_game():
     while True:
         gf.check_events(set, screen, ship, bullets)
         ship.update()
-        bullets.update()
-        # Deleting bullets leaving the screen
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
+        gf.update_bullets(bullets)
         gf.update_screen(set, screen, ship, bullets)
         pygame.display.flip()  # update the screen
 
