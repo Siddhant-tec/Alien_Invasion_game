@@ -30,11 +30,12 @@ def check_events(set, screen, ship, bullets):
             check_keyup_events(event, ship)
 
 
-def update_screen(set, screen, ship, bullets):
+def update_screen(set, screen, ship, alien, bullets):
     screen.fill(set.bg_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
+    alien.blitme()
 
 
 def fire_bullets(set, screen, ship, bullets):
