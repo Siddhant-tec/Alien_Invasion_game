@@ -17,7 +17,7 @@ def run_game():
     alien = Alien(set, screen)
 
     # Creating a fleet of aliens
-    gf.create_fleet(set, screen, aliens)
+    gf.create_fleet(set, screen, ship, aliens)
 
     while True:
         gf.check_events(set, screen, ship, bullets)

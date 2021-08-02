@@ -58,21 +58,28 @@ def get_number_aliens_x(set, alien_width):
     # Determine the number of aliens that fit in a row
     return number_aliens_x
 
-def create_alien(set, screen, aliens, alien_number):
+
+def get_number_rows(set, ship_height, alien_height):
+    available_space_y = (set.screen_height - (3 * alien_height) - ship_height)
+    number_rows = int(available_space_y / (2 * alien_height))
+    return number_rows
+
+
+def create_alien(set, screen, aliens, alien_number, row_number):
     alien = Alien(set, screen)
     alien_width = alien.rect.width
     alien.x = alien_width + 2 * alien_width * alien_number
     alien.rect.x = alien.x
+    alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
     aliens.add(alien)
 
 
-def create_fleet(set, screen, aliens):
+def create_fleet(set, screen, ship, aliens):
     alien = Alien(set, screen)
     number_aliens_x = get_number_aliens_x(set, alien.rect.width)
+    number_rows = get_number_rows(set, ship.rect.height, alien.rect.height)
 
-    # creating rows of aliens
-    for alien_number in range(number_aliens_x):
-        create_alien(set, screen, aliens, alien_number)
-
-
-
+    # creating fleet of aliens
+    for row_number in range(number_rows):
+        for alien_number in range(number_aliens_x):
+            create_alien(set, screen, aliens, alien_number, row_number)
