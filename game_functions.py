@@ -52,15 +52,27 @@ def update_bullets(bullets):
             bullets.remove(bullet)
 
 
-def create_fleet(set, screen, aliens):
-    alien = Alien(set, screen)
-    alien_width = alien.rect.width
+def get_number_aliens_x(set, alien_width):
     available_space_x = set.screen_width - 2 * alien_width
     number_aliens_x = int(available_space_x / (2 * alien_width))
+    # Determine the number of aliens that fit in a row
+    return number_aliens_x
+
+def create_alien(set, screen, aliens, alien_number):
+    alien = Alien(set, screen)
+    alien_width = alien.rect.width
+    alien.x = alien_width + 2 * alien_width * alien_number
+    alien.rect.x = alien.x
+    aliens.add(alien)
+
+
+def create_fleet(set, screen, aliens):
+    alien = Alien(set, screen)
+    number_aliens_x = get_number_aliens_x(set, alien.rect.width)
 
     # creating rows of aliens
     for alien_number in range(number_aliens_x):
-        alien = Alien(set, screen)
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        aliens.add(alien)
+        create_alien(set, screen, aliens, alien_number)
+
+
+
