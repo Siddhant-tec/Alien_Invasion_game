@@ -22,7 +22,7 @@ def run_game():
     while True:
         gf.check_events(set, screen, ship, bullets)
         ship.update()
-        gf.update_bullets(bullets)
+        gf.update_bullets(aliens, bullets)
         gf.update_aliens(aliens)
         gf.update_screen(set, screen, ship, aliens, bullets)
         pygame.display.flip()  # update the screen

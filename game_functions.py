@@ -44,12 +44,13 @@ def fire_bullets(set, screen, ship, bullets):
     bullets.add(new_bullet)
 
 
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
     bullets.update()
     # Deleting bullets leaving the screen
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)     #shotting the aliens
 
 
 def get_number_aliens_x(set, alien_width):
